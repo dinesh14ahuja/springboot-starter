@@ -20,7 +20,7 @@ jobs:
         run: docker login -u ${{secrets.DOCKER_USERNAME}} -p ${{secrets.DOCKER_PASSWORD}}
       - name: Build Docker Image
         run: docker build -t dinesh14ahuja/springboot-starter .
-      -name: Publish image to docker push
+      - name: Publish image to docker push
         run: docker push dinesh14ahuja/springboot-starter:latest
   deploy:
     needs: build
@@ -29,6 +29,6 @@ jobs:
       - name: Pull image from docker hub
         run: docker pull dinesh14ahuja/springboot-starter
       - name: Delete old container
-      run: docker rm -f springboot-example-container
+        run: docker rm -f springboot-example-container
       - name: Run docker Container
         run: docker run -d -p 8080:8080 --name springboot-example-container dinesh14ahuja/springboot-starter
