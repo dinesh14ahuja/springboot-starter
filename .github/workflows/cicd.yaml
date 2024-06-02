@@ -27,7 +27,7 @@ jobs:
     runs-on: EC2-runner
     steps:
       - name: Pull image from docker hub
-        run: docker pull dinesh14ahuja/springboot-starter
+        run: docker pull dinesh14ahuja/springboot-starter:latest
       - name: Delete old container
         run: docker rm -f springboot-example-container
       - name: Run docker Container
